@@ -54,5 +54,15 @@ function watchTask() {
   );
 }
 
+// build task (custom)
+function buildTask(cb) {
+  // Run your build tasks here
+  // For simplicity, let's just run the scss and js tasks
+  return series(scssTask, jsTask)(cb);
+}
+
 // default gulp task
 exports.default = series(scssTask, jsTask, browserSyncServe, watchTask);
+
+// add the build task to exports
+exports.build = buildTask;
